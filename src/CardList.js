@@ -1,7 +1,7 @@
-const CardList = ({cards}) => {
+const CardList = ({cards, onSelect=() => {}}) => {
     const Card = ({card}) => {
         return (
-            <article>
+            <article onClick={() => onSelect(card)}>
                 {card.title}
             </article>
         )
