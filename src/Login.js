@@ -12,10 +12,13 @@ const Login = ({registering, onSuccess}) => {
     const clickHandler = event => {
         event.preventDefault()
         if (registering) {
-            // TODO: post to registration endpoint
+            axios.post(urls.register(), {
+                username, email, password,
+                re_password: confirm,
+            }).then(console.log)   // TODO: use register response
         } else {
             axios.post(urls.login(), { username, password })
-                .then(console.log)
+                .then(console.log)   // TODO: store token
         }
     }
 
