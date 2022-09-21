@@ -10,9 +10,13 @@ const Login = ({registering, onSuccess}) => {
     const [confirm, setConfirm] = useState('')
 
     const clickHandler = event => {
-        axios.post(urls.login(), { username, password })
-            .then(console.log)
         event.preventDefault()
+        if (registering) {
+            // TODO: post to registration endpoint
+        } else {
+            axios.post(urls.login(), { username, password })
+                .then(console.log)
+        }
     }
 
     return (
