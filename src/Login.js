@@ -50,6 +50,7 @@ const Login = ({registering, onSuccess}) => {
                     />
                 </div> : ''
             }
+            <button>Log In</button>
         </form>
     )
 }
