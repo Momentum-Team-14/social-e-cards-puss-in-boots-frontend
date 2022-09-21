@@ -15,7 +15,7 @@ const Login = ({registering, onSuccess}) => {
         event.preventDefault()
     }
 
-    return (   //1qazXSW@  zaq1@WSX
+    return (
         <form>
             <div>
                 <label htmlFor="login-username">Username</label>
