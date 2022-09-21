@@ -16,7 +16,7 @@ const Login = ({onSuccess}) => {
                 />
             </div>
             <div>
-                <label htmlFor="login-password">password</label>
+                <label htmlFor="login-password">Password</label>
                 <input
                     type="password"
                     value={password}
