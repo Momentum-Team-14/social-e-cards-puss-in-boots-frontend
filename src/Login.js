@@ -1,11 +1,19 @@
+import axios from "axios";
 import { useState } from "react";
 import { handleUpdate } from "./utils";
+import urls from "./endpoints";
 
 const Login = ({registering, onSuccess}) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirm, setConfirm] = useState('')
+
+    const clickHandler = event => {
+        axios.post(urls.login(), { username, password })
+            .then(console.log)
+        event.preventDefault()
+    }
 
     return (   //1qazXSW@  zaq1@WSX
         <form>
@@ -50,7 +58,9 @@ const Login = ({registering, onSuccess}) => {
                     />
                 </div> : ''
             }
-            <button>Log In</button>
+            <button
+                onClick={clickHandler}
+            >Log In</button>
         </form>
     )
 }
