@@ -1,4 +1,4 @@
-const apiRoot = "127.0.0.1"
+const apiRoot = "https://powerful-island-75819.herokuapp.com/"
 
 const Urls = {
     login: () => `${apiRoot}/api/auth/token/login`,
