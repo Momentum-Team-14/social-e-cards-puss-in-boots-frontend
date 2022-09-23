@@ -5,22 +5,17 @@ import CardDetails from './CardDetails'
 //import Login from './Login'
 import CardList from './CardList'
 import {cards} from './mock'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
     const [card, setCard] = useState(null)
 
-    if (card) {
-        return (
-            <CardDetails card={card} />
-        )
-    } else {
-        return (
-            <CardList
-                cards={cards}
-                onSelect={setCard}
-            />
-        )
-    }
+    return (
+        <Routes>
+            <Route path="cards" element={<CardList cards={cards} onSelect={setCard} />} />
+            <Route path="cards/:pk" element={<CardDetails card={card} />} />
+        </Routes>
+    )
 }
 
 export default App
