@@ -1,6 +1,7 @@
 const cards = [
     {
         owner: {
+            pk: 2,
             username: 'Mock User',
         },
         title: 'Test Card 1',
@@ -10,6 +11,7 @@ const cards = [
     },
     {
         owner: {
+            pk: 1,
             username: 'root',
         },
         title: 'Test Card 2',
@@ -19,6 +21,7 @@ const cards = [
     },
     {
         owner: {
+            pk: 3,
             username: 'Jebediah Kerman',
         },
         title: 'Test Card 3',
