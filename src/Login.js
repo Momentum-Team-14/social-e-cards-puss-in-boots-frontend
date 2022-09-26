@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { handleUpdate } from "./utils";
-import urls from "./endpoints";
+import { urls } from "./endpoints";
 
 const Login = ({registering, onSuccess}) => {
     const [username, setUsername] = useState('')
