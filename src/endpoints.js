@@ -11,7 +11,7 @@ const urls = {
 
 const getCards = async () => {
     const data = await axios.get(urls.getCards()).then(res => res.data)
-    return data.result.map(card => ({
+    return data.results.map(card => ({
         ...card,
         get comments() {
             return axios.get(urls.getComments(card.pk))
