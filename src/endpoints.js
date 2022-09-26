@@ -1,8 +1,26 @@
-const apiRoot = "127.0.0.1"
+import axios from "axios"
 
-const Urls = {
-    login: () => `${apiRoot}/api/auth/token/login`,
-    register: () => `${apiRoot}/api/auth/users`,
+const apiRoot = "https://powerful-island-75819.herokuapp.com"
+
+const urls = {
+    login: () => `${apiRoot}/api/auth/token/login/`,
+    register: () => `${apiRoot}/api/auth/users/`,
+    getCards: () => `${apiRoot}/ecard/`,
+    getComments: (pk) => `${apiRoot}/comments/${pk}/`,
 }
 
-export default Urls
+const getCards = async () => {
+    const data = await axios.get(urls.getCards()).then(res => res.data)
+    return data.result.map(card => ({
+        ...card,
+        get comments() {
+            return axios.get(urls.getComments(card.pk))
+                .then(res => res.data)
+        }
+    }))
+}
+
+export {
+    getCards,
+    urls,
+}

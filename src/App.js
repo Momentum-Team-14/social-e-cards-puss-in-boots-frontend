@@ -4,7 +4,6 @@ import './App.css'
 import CardDetails from './CardDetails'
 //import Login from './Login'
 import CardList from './CardList'
-import {cards} from './mock'
 
 function App() {
     const [card, setCard] = useState(null)
@@ -16,7 +15,6 @@ function App() {
     } else {
         return (
             <CardList
-                cards={cards}
                 onSelect={setCard}
             />
         )
