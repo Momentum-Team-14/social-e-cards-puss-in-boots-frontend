@@ -10,8 +10,14 @@ const urls = {
 }
 
 const getCards = async () => {
-    const cards = await axios.get(urls.getCards()).then(res => res.data)
-    return cards.map(card => ({...card}))
+    const data = await axios.get(urls.getCards()).then(res => res.data)
+    return data.result.map(card => ({
+        ...card,
+        get comments() {
+            return axios.get(urls.getComments(card.pk))
+                .then(res => res.data)
+        }
+    }))
 }
 
 export {
