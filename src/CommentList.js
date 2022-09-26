@@ -12,7 +12,7 @@ const CommentList = ({comments, onSelect=() =>{}}) => {
 
     return (
         <div>
-            {comment.map(comment => <Comment comment={comment} key={comment.pk} />)}
+            {comments.map(comment => <Comment comment={comment} key={comment.pk} />)}
         </div>
     )
 }
