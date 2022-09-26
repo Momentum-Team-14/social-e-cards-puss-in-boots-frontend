@@ -14,8 +14,11 @@ const getCards = async () => {
     return data.results.map(card => ({
         ...card,
         get comments() {
-            return axios.get(urls.getComments(card.pk))
-                .then(res => res.data)
+            // return axios.get(urls.getComments(card.pk))
+            //     .then(res => res.data)
+            return axios.get(`${apiRoot}/comments/`)
+                .then(res => res.data.results
+                    .filter(comment => comment.card === card.pk))
         }
     }))
 }
