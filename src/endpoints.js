@@ -3,8 +3,8 @@ import axios from "axios"
 const apiRoot = "https://powerful-island-75819.herokuapp.com"
 
 const urls = {
-    login: () => `${apiRoot}/api/auth/token/login/`,
-    register: () => `${apiRoot}/api/auth/users/`,
+    login: () => `${apiRoot}/auth/token/login/`,
+    register: () => `${apiRoot}/auth/users/`,
     getCards: () => `${apiRoot}/ecard/`,
     getCard: (pk) => `${apiRoot}/ecard/${pk}/`,
     getComments: (pk) => `${apiRoot}/comments/${pk}/`,
