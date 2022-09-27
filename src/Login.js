@@ -71,7 +71,7 @@ const Login = ({registering, onSuccess}) => {
             <button
                 className="btn btn-primary"
                 onClick={clickHandler}
-            >Log In</button>
+            >{registering ? 'Register' : 'Log In'}</button>
         </form>
     )
 }
