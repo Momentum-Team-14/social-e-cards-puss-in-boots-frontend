@@ -15,10 +15,13 @@ const Login = ({registering, onSuccess}) => {
             axios.post(urls.register(), {
                 username, email, password,
                 re_password: confirm,
-            }).then(console.log)   // TODO: use register response
+            }).then(axios.post(urls.login(), { username, password }))
+                .then(console.log)   // TODO: store token
+                .catch(console.log)   // TODO: handle error here
         } else {
             axios.post(urls.login(), { username, password })
                 .then(console.log)   // TODO: store token
+                .catch(console.log)   // TODO: handle error here
         }
     }
 
