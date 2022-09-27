@@ -69,6 +69,7 @@ const Login = ({registering, onSuccess}) => {
                 </div> : ''
             }
             <button
+                className="btn btn-primary"
                 onClick={clickHandler}
             >Log In</button>
         </form>
