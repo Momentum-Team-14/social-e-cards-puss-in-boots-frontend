@@ -10,6 +10,18 @@ const Login = ({registering, onSuccess}) => {
     const [confirm, setConfirm] = useState('')
     const [errors, setErrors] = useState({})
 
+    const handleLogin = callback => res => {
+        if (res.status !== 200) {
+            let err = new Error(`Got unexpected response code ${res.status}`)
+            err.response = {
+                data: {
+                    non_field_error: [ err.message ]
+                }
+            }
+            throw err
+        }
+    }
+
     const clickHandler = event => {
         event.preventDefault()
         if (registering) {
@@ -17,11 +29,11 @@ const Login = ({registering, onSuccess}) => {
                 username, email, password,
                 re_password: confirm,
             }).then(() => axios.post(urls.login(), { username, password }))
-                .then(console.log)   // TODO: store token
+                .then(handleLogin(onSuccess))   // TODO: store token
                 .catch(err => setErrors(err.response.data || {}))
         } else {
             axios.post(urls.login(), { username, password })
-                .then(console.log)   // TODO: store token
+                .then(handleLogin(onSuccess))   // TODO: store token
                 .catch(err => setErrors(err.response.data || {}))
         }
     }
