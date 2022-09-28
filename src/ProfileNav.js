@@ -8,6 +8,7 @@ const ProfileNav = ({
     onLogout=nothing,
     onProfile=nothing,
     loggedIn=false,
+    username='',
 }) => {
     const [loginPrompt, setLoginPrompt] = useState(false)
     const [registering, setRegistering] = useState(false)
@@ -26,14 +27,21 @@ const ProfileNav = ({
             height: '3rem',
         }}>
             { loggedIn ? <>
-                    <a
-                        href="/#"
-                        onClick={() => {
-                            logout()
-                            onLogout()
-                        }
-                    }>Logout</a>
-                    <a href="/#" onClick={onProfile}>Profile</a>
+                    <div style={{marginRight: '1rem'}}>
+                        <a
+                            href="/#"
+                            style={
+                                {
+                                    marginRight: '0.5em',
+                                }
+                            }
+                            onClick={() => {
+                                logout()
+                                onLogout()
+                            }
+                        }>Logout</a>
+                        <a href="/#" onClick={onProfile}>Profile</a>
+                    </div>
                 </> : <>
                 <div style={{marginRight: '1rem'}}>
                     <a href="/#" onClick={showLoginPrompt(false)}>Login</a>
