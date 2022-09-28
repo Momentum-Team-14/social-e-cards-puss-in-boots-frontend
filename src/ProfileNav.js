@@ -33,7 +33,7 @@ const ProfileNav = ({
                             onLogout()
                         }
                     }>Logout</a>
-                    Profile
+                    <a href="/#" onClick={onProfile}>Profile</a>
                 </> : <>
                 <div style={{marginRight: '1rem'}}>
                     <a href="/#" onClick={showLoginPrompt(false)}>Login</a>
