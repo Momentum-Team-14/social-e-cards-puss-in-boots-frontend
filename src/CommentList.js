@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
+import { nothing } from "./utils"
 
-const CommentList = ({comments, onSelect=() =>{}}) => {
+const CommentList = ({comments, onSelect=nothing}) => {
     const Comment = ({comment}) =>{
         return (
             <article onClick={() => onSelect(comment)}>

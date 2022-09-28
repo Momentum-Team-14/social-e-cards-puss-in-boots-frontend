@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import { handleUpdate } from "./utils";
+import { handleUpdate, nothing } from "./utils";
 import { urls } from "./endpoints";
 
-const Login = ({registering, onSuccess}) => {
+const Login = ({registering, onSuccess=nothing}) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
