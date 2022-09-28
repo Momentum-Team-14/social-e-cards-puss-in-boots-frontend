@@ -16,8 +16,12 @@ import ProfileNav from './ProfileNav'
 
 function App() {
     const [card, setCard] = useState(null)
-    const [token, setToken] = useLocalStorageState(null)
-    const [username, setUsername] = useLocalStorageState('')
+    const [token, setToken] = useLocalStorageState('auth-token', {
+        defaultValue: null,
+    })
+    const [username, setUsername] = useLocalStorageState('username', {
+        defaultValue: '',
+    })
 
     const setUserDetails = data => {
         setToken(data.token || null)
