@@ -26,7 +26,10 @@ function App() {
 
     return (
         <div>
-            <ProfileNav loggedIn={token !== null} />
+            <ProfileNav
+                onLogin={setUserDetails}
+                loggedIn={token !== null}
+            />
             <Routes>
                 <Route path="/" element={<Navigate to="cards" />} />
                 <Route path="cards" element={<CardList cards={cards} onSelect={setCard} />} />
