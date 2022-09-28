@@ -11,7 +11,9 @@ const Login = ({registering, onSuccess=nothing}) => {
     const [errors, setErrors] = useState({})
 
     const handleLogin = callback => res => {
-        if (res.status !== 200) {
+        if (res.status === 200) {
+            callback(res.data.auth_token)
+        } else {
             let err = new Error(`Got unexpected response code ${res.status}`)
             err.response = {
                 data: {
