@@ -39,7 +39,7 @@ const ProfileNav = ({
                             onClick={e => {
                                 e.preventDefault()
                                 logout()
-                                onLogout()
+                                onLogout({})
                             }
                         }>Logout</a>
                         <a
