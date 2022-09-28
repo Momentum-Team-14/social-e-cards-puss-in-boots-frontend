@@ -11,9 +11,17 @@ import {
     Routes,
     Route,
 } from 'react-router-dom'
+import useLocalStorageState from 'use-local-storage-state'
 
 function App() {
     const [card, setCard] = useState(null)
+    const [token, setToken] = useLocalStorageState(null)
+    const [username, setUsername] = useLocalStorageState('')
+
+    const setUserDetails = data => {
+        setToken(data.token)
+        setUsername(data.username)
+    }
 
     return (
         <Routes>

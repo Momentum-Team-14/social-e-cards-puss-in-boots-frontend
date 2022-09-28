@@ -1,14 +1,32 @@
 import axios from "axios";
 import { useState } from "react";
-import { handleUpdate } from "./utils";
+import { handleUpdate, nothing } from "./utils";
 import { urls } from "./endpoints";
 
-const Login = ({registering, onSuccess}) => {
+const Login = ({registering, onSuccess=nothing}) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirm, setConfirm] = useState('')
     const [errors, setErrors] = useState({})
+
+    const handleLogin = callback => res => {
+        if (res.status === 200) {
+            setErrors({})
+            callback({
+                username,
+                token: res.data.auth_token,
+            })
+        } else {
+            let err = new Error(`Got unexpected response code ${res.status}`)
+            err.response = {
+                data: {
+                    non_field_error: [ err.message ]
+                }
+            }
+            throw err
+        }
+    }
 
     const clickHandler = event => {
         event.preventDefault()
@@ -17,11 +35,11 @@ const Login = ({registering, onSuccess}) => {
                 username, email, password,
                 re_password: confirm,
             }).then(() => axios.post(urls.login(), { username, password }))
-                .then(console.log)   // TODO: store token
+                .then(handleLogin(onSuccess))
                 .catch(err => setErrors(err.response.data || {}))
         } else {
             axios.post(urls.login(), { username, password })
-                .then(console.log)   // TODO: store token
+                .then(handleLogin(onSuccess))
                 .catch(err => setErrors(err.response.data || {}))
         }
     }
