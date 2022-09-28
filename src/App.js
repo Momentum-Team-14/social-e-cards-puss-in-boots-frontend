@@ -12,23 +12,36 @@ import {
     Route,
 } from 'react-router-dom'
 import useLocalStorageState from 'use-local-storage-state'
+import ProfileNav from './ProfileNav'
 
 function App() {
     const [card, setCard] = useState(null)
-    const [token, setToken] = useLocalStorageState(null)
-    const [username, setUsername] = useLocalStorageState('')
+    const [token, setToken] = useLocalStorageState('auth-token', {
+        defaultValue: null,
+    })
+    const [username, setUsername] = useLocalStorageState('username', {
+        defaultValue: '',
+    })
 
     const setUserDetails = data => {
-        setToken(data.token)
-        setUsername(data.username)
+        setToken(data.token || null)
+        setUsername(data.username || null)
     }
 
     return (
-        <Routes>
-            <Route path="/" element={<Navigate to="cards" />} />
-            <Route path="cards" element={<CardList cards={cards} onSelect={setCard} />} />
-            <Route path="cards/:pk" element={<CardDetails card={card} />} />
-        </Routes>
+        <div>
+            <ProfileNav
+                onLogin={setUserDetails}
+                onLogout={setUserDetails}
+                loggedIn={token !== null}
+                username={username}
+            />
+            <Routes>
+                <Route path="/" element={<Navigate to="cards" />} />
+                <Route path="cards" element={<CardList cards={cards} onSelect={setCard} />} />
+                <Route path="cards/:pk" element={<CardDetails card={card} />} />
+            </Routes>
+        </div>
     )
 }
 
