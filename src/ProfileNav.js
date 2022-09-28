@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { logout } from "./endpoints"
 import Login from "./Login"
 import { nothing } from "./utils"
 
@@ -25,7 +26,13 @@ const ProfileNav = ({
             height: '3rem',
         }}>
             { loggedIn ? <>
-                    <a href="/#" onClick={onLogout}>Logout</a>
+                    <a
+                        href="/#"
+                        onClick={() => {
+                            logout()
+                            onLogout()
+                        }
+                    }>Logout</a>
                     Profile
                 </> : <>
                 <div style={{marginRight: '1rem'}}>
