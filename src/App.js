@@ -12,6 +12,7 @@ import {
     Route,
 } from 'react-router-dom'
 import useLocalStorageState from 'use-local-storage-state'
+import ProfileNav from './ProfileNav'
 
 function App() {
     const [card, setCard] = useState(null)
@@ -24,11 +25,14 @@ function App() {
     }
 
     return (
-        <Routes>
-            <Route path="/" element={<Navigate to="cards" />} />
-            <Route path="cards" element={<CardList cards={cards} onSelect={setCard} />} />
-            <Route path="cards/:pk" element={<CardDetails card={card} />} />
-        </Routes>
+        <div>
+            <ProfileNav loggedIn={token !== null} />
+            <Routes>
+                <Route path="/" element={<Navigate to="cards" />} />
+                <Route path="cards" element={<CardList cards={cards} onSelect={setCard} />} />
+                <Route path="cards/:pk" element={<CardDetails card={card} />} />
+            </Routes>
+        </div>
     )
 }
 
