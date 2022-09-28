@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom"
 import { nothing } from "./utils"
 
 const CommentList = ({comments, onSelect=nothing}) => {
