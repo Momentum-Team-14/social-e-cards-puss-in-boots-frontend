@@ -20,14 +20,15 @@ function App() {
     const [username, setUsername] = useLocalStorageState('')
 
     const setUserDetails = data => {
-        setToken(data.token)
-        setUsername(data.username)
+        setToken(data.token || null)
+        setUsername(data.username || null)
     }
 
     return (
         <div>
             <ProfileNav
                 onLogin={setUserDetails}
+                onLogout={setUserDetails}
                 loggedIn={token !== null}
             />
             <Routes>
