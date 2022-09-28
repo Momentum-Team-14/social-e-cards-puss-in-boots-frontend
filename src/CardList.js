@@ -24,7 +24,7 @@ const CardList = ({onSelect=nothing}) => {
     }
 
     return (
-        <div>
+        <div className='card-titles'>
             {cards.map(card => <Card card={card} key={card.pk} />)}
         </div>
     )
