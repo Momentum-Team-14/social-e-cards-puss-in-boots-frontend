@@ -25,7 +25,7 @@ const ProfileNav = ({
             height: '3rem',
         }}>
             { loggedIn ? <>
-                    Logout
+                    <a href="/#" onClick={onLogout}>Logout</a>
                     Profile
                 </> : <>
                 <div style={{marginRight: '1rem'}}>
