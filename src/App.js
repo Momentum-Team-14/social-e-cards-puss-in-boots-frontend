@@ -34,6 +34,7 @@ function App() {
                 onLogin={setUserDetails}
                 onLogout={setUserDetails}
                 loggedIn={token !== null}
+                username={username}
             />
             <Routes>
                 <Route path="/" element={<Navigate to="cards" />} />

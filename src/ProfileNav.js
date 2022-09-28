@@ -27,6 +27,7 @@ const ProfileNav = ({
             height: '3rem',
         }}>
             { loggedIn ? <>
+                    <span style={{marginRight: '2rem'}}>Welcome, {username}!</span>
                     <div style={{marginRight: '1rem'}}>
                         <a
                             href="/#"
