@@ -5,9 +5,18 @@ const apiRoot = "https://powerful-island-75819.herokuapp.com"
 const urls = {
     login: () => `${apiRoot}/auth/token/login/`,
     register: () => `${apiRoot}/auth/users/`,
+    logout: () => `${apiRoot}/auth/token/logout/`,
     getCards: () => `${apiRoot}/ecard/`,
     getCard: (pk) => `${apiRoot}/ecard/${pk}/`,
     getComments: (pk) => `${apiRoot}/comments/${pk}/`,
+}
+
+const logout = async (token) => {
+    await axios.post(urls.logout(), '', {
+        headers: {
+            Authorization: `Token ${token}`,
+        },
+    })
 }
 
 const getCards = async () => {
@@ -20,6 +29,7 @@ const getCard = async (pk) => {
 }
 
 export {
+    logout,
     getCards,
     getCard,
     urls,
