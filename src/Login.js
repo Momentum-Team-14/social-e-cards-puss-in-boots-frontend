@@ -31,11 +31,11 @@ const Login = ({registering, onSuccess=nothing}) => {
                 username, email, password,
                 re_password: confirm,
             }).then(() => axios.post(urls.login(), { username, password }))
-                .then(handleLogin(onSuccess))   // TODO: store token
+                .then(handleLogin(onSuccess))
                 .catch(err => setErrors(err.response.data || {}))
         } else {
             axios.post(urls.login(), { username, password })
-                .then(handleLogin(onSuccess))   // TODO: store token
+                .then(handleLogin(onSuccess))
                 .catch(err => setErrors(err.response.data || {}))
         }
     }
