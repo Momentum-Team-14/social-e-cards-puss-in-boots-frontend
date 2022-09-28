@@ -13,7 +13,10 @@ const Login = ({registering, onSuccess=nothing}) => {
     const handleLogin = callback => res => {
         if (res.status === 200) {
             setErrors({})
-            callback(res.data.auth_token)
+            callback({
+                username,
+                token: res.data.auth_token,
+            })
         } else {
             let err = new Error(`Got unexpected response code ${res.status}`)
             err.response = {
