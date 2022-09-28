@@ -36,12 +36,19 @@ const ProfileNav = ({
                                     marginRight: '0.5em',
                                 }
                             }
-                            onClick={() => {
+                            onClick={e => {
+                                e.preventDefault()
                                 logout()
                                 onLogout()
                             }
                         }>Logout</a>
-                        <a href="/#" onClick={onProfile}>Profile</a>
+                        <a
+                            href="/#"
+                            onClick={e => {
+                                e.preventDefault()
+                                onProfile()
+                            }
+                        }>Profile</a>
                     </div>
                 </> : <>
                 <div style={{marginRight: '1rem'}}>
