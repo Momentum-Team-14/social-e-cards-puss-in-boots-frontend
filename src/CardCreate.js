@@ -1,4 +1,5 @@
 import { useState } from "react"
+import CardStyles from "./CardStyles"
 import { handleUpdate } from "./utils"
 
 const CardCreate = ({token}) => {
@@ -25,6 +26,7 @@ const CardCreate = ({token}) => {
             onChange={handleUpdate(setInnerText)}
             placeholder="Inner Message"
         /></div>
+        <div><CardStyles /></div>
         <div><button className="btn btn-primary">Create Card</button></div>
     </form>)
 }
