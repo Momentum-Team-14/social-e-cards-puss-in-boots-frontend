@@ -13,12 +13,12 @@ const urls = {
 }
 
 const login = async (body) => {
-    body.username = encodeUsername(body.username)
+    body.username = encodeUsername(body.username.trim())
     return axios.post(urls.login(), body)
 }
 
 const register = async (body) => {
-    body.username = encodeUsername(body.username)
+    body.username = encodeUsername(body.username.trim())
     return axios.post(urls.register(), body)
 }
 
