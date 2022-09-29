@@ -5,6 +5,7 @@ import CardDetails from './CardDetails'
 //import Login from './Login'
 import CardList from './CardList'
 import {cards} from './mock'
+import  DropDownMenu  from './styles'
 
 import {
     Navigate,
@@ -14,6 +15,7 @@ import {
 import useLocalStorageState from 'use-local-storage-state'
 import ProfileNav from './ProfileNav'
 import CardCreate from './CardCreate'
+
 
 function App() {
     const [card, setCard] = useState(null)
@@ -42,6 +44,7 @@ function App() {
                 <Route path="cards" element={<CardList token={token} cards={cards} onSelect={setCard} />} />
                 <Route path="cards/new" element={<CardCreate token={token} />} />
                 <Route path="cards/:pk" element={<CardDetails token={token} card={card} />} />
+                <Route path='styles' element={<DropDownMenu/>} />
             </Routes>
         </div>
     )

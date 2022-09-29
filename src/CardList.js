@@ -26,7 +26,7 @@ const CardList = ({token, onSelect=nothing}) => {
     return (
         <>
             {token ? <Link to="new">Create New Card</Link> : ''}
-            <div>
+            <div className="card-titles">
                 {cards.map(card => <Card card={card} key={card.pk} />)}
             </div>
         </>
