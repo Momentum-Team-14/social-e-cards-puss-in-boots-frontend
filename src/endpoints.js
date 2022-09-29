@@ -12,6 +12,12 @@ const urls = {
     getComments: (pk) => `${apiRoot}/comments/${pk}/`,
 }
 
+const auth = token => ({
+    headers: {
+        Authorization: `Token ${token}`,
+    }
+})
+
 const login = async (body) => {
     body.username = encodeUsername(body.username.trim())
     return axios.post(urls.login(), body)
@@ -23,11 +29,7 @@ const register = async (body) => {
 }
 
 const logout = async (token) => {
-    return axios.post(urls.logout(), '', {
-        headers: {
-            Authorization: `Token ${token}`,
-        },
-    })
+    return axios.post(urls.logout(), '', auth(token))
 }
 
 const getCards = async () => {
@@ -39,11 +41,30 @@ const getCard = async (pk) => {
     return await axios.get(urls.getCard(pk)).then(res => res.data)
 }
 
+const createCard = async (token, card) => {
+    if (!card.style) {
+        card.style = 1
+    } else {
+        card.style = (await createStyle(card.style)).pk
+    }
+    const data = await axios.post(urls.createCard(), card, auth(token))
+        .then(res => res.data)
+    return data
+}
+
+const createStyle = async (token, style) => {
+    const data = await axios.post(urls.createStyle(), style, auth(token))
+        .then(res => res.data)
+    return data
+}
+
 export {
     login,
     register,
     logout,
     getCards,
     getCard,
+    createCard,
+    createStyle,
     urls,
 }
