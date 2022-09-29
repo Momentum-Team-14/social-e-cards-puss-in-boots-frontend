@@ -1,64 +1,41 @@
+import { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
 const CardStyles = () => {
+    const colors = ['White', 'Red', 'Yellow', 'Green', 'Blue', 'Black', 'Pink', 'Purple', 'Orange']
+    const borderStyles = ['Solid', 'Dotted', 'Ridge', 'Double', 'Groove']
+    const fonts = ['Lobster', 'Papyrus', 'Comic Sans']
+    const fontColors = ['Black', 'Red', 'Yellow', 'Green', 'Blue', 'White', 'Pink', 'Purple', 'Orange']
+    const textAligns = ['Left Justify', 'Center', 'Right Justify']
+
+    const [color, setColor] = useState(colors[0])
+    const [borderStyle, setBorderStyle] = useState(borderStyles[0])
+    const [borderColor, setBorderColor] = useState(colors[0])
+    const [font, setFont] = useState(fonts[0])
+    const [fontColor, setFontColor] = useState(fontColors[0])
+    const [textAlign, setTextAlign] = useState(textAligns[0])
+
     return (
         <div className='style-buttons'>
         <DropdownButton id="dropdown-basic-button" title="Card Color">
-        <Dropdown.Item href="#/action-1">White</Dropdown.Item>
-        <Dropdown.Item href="#/action-1">Red</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Yellow</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Green</Dropdown.Item>
-        <Dropdown.Item href="#/action-4">Blue</Dropdown.Item>
-        <Dropdown.Item href="#/action-5">Black</Dropdown.Item>
-        <Dropdown.Item href="#/action-6">Pink</Dropdown.Item>
-        <Dropdown.Item href="#/action-7">Purple</Dropdown.Item>
-        <Dropdown.Item href="#/action-8">Orange</Dropdown.Item>
+            {colors.map(option => <Dropdown.Item onClick={() => setColor(option)}>{option}</Dropdown.Item>)}
         </DropdownButton>
-
         <DropdownButton id="dropdown-basic-button" title="Border Style">
-        <Dropdown.Item href="#/action-1">Solid</Dropdown.Item>
-        <Dropdown.Item href="#/action-1">Dotted</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Ridge</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Double</Dropdown.Item>
-        <Dropdown.Item href="#/action-4">Groove</Dropdown.Item>
+            {borderStyles.map(option => <Dropdown.Item onClick={() => setBorderStyle(option)}>{option}</Dropdown.Item>)}
         </DropdownButton>
-
         <DropdownButton id="dropdown-basic-button" title="Border Color">
-        <Dropdown.Item href="#/action-1">White</Dropdown.Item>
-        <Dropdown.Item href="#/action-1">Red</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Yellow</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Green</Dropdown.Item>
-        <Dropdown.Item href="#/action-4">Blue</Dropdown.Item>
-        <Dropdown.Item href="#/action-5">Black</Dropdown.Item>
-        <Dropdown.Item href="#/action-6">Pink</Dropdown.Item>
-        <Dropdown.Item href="#/action-7">Purple</Dropdown.Item>
-        <Dropdown.Item href="#/action-8">Orange</Dropdown.Item>
+            {colors.map(option => <Dropdown.Item onClick={() => setBorderColor(option)}>{option}</Dropdown.Item>)}
         </DropdownButton>
-
         <DropdownButton id="dropdown-basic-button" title="Font">
-        <Dropdown.Item href="#/action-1">Lobster</Dropdown.Item>
-        <Dropdown.Item href="#/action-1">Papyrus</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Comic Sans</Dropdown.Item>
+            {colors.map(option => <Dropdown.Item onClick={() => setFont(option)}>{option}</Dropdown.Item>)}
         </DropdownButton>
-
         <DropdownButton id="dropdown-basic-button" title="Font Color">
-        <Dropdown.Item href="#/action-1">Black</Dropdown.Item>
-        <Dropdown.Item href="#/action-1">Red</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Yellow</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Green</Dropdown.Item>
-        <Dropdown.Item href="#/action-4">Blue</Dropdown.Item>
-        <Dropdown.Item href="#/action-5">White</Dropdown.Item>
-        <Dropdown.Item href="#/action-6">Pink</Dropdown.Item>
-        <Dropdown.Item href="#/action-7">Purple</Dropdown.Item>
-        <Dropdown.Item href="#/action-8">Orange</Dropdown.Item>
+            {colors.map(option => <Dropdown.Item onClick={() => setFontColor(option)}>{option}</Dropdown.Item>)}
         </DropdownButton>
-
         <DropdownButton id="dropdown-basic-button" title="Text Alignment">
-        <Dropdown.Item href="#/action-1">Left Justify</Dropdown.Item>
-        <Dropdown.Item href="#/action-1">Center</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Right Justify</Dropdown.Item>
+            {colors.map(option => <Dropdown.Item onClick={() => setTextAlign(option)}>{option}</Dropdown.Item>)}
         </DropdownButton>
         </div>
     );
