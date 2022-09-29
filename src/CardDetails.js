@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import CommentList from "./CommentList"
 import { getCard } from "./endpoints"
 
+
 const CardDetails = (props) => {
     const [card, setCard] = useState(props.card)
     const [showFront, setShowFront] = useState(true)
