@@ -24,6 +24,13 @@ const CardDetails = (props) => {
             <h1>{card.title}</h1>
             <div>by {card.owner.username}</div>
             <div
+                style={{
+                    backgroundColor: card.style.card_color,
+                    border: `2px ${card.style.border} ${card.style.borderColor}`,
+                    color: card.style.font_color,
+                    fontFamily: card.style.font,
+                    textAlign: card.style.text_align,
+                }}
                 onClick={() => setShowFront(!showFront)}
             >{showFront ? card.outer_message : card.inner_message}</div>
             <CommentList comments={card.comments}/>
