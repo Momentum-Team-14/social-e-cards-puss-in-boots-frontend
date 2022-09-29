@@ -18,7 +18,7 @@ const encodeUsername = username => {
             let encodedChar = ''
             let codepoint = char.codePointAt(0)
             for (let j = 0; j < 4; j++) {
-                encodedChar = BASE64MAP[codepoint & 6] + encodedChar
+                encodedChar = BASE64MAP[codepoint & 63] + encodedChar
                 codepoint >>= 6
             }
             encodedChar = '+' + encodedChar
