@@ -1,4 +1,5 @@
 import axios from "axios"
+import { encodeUsername } from "./utils"
 
 const apiRoot = "https://powerful-island-75819.herokuapp.com"
 
@@ -11,8 +12,18 @@ const urls = {
     getComments: (pk) => `${apiRoot}/comments/${pk}/`,
 }
 
+const login = async (body) => {
+    body.username = encodeUsername(body.username.trim())
+    return axios.post(urls.login(), body)
+}
+
+const register = async (body) => {
+    body.username = encodeUsername(body.username.trim())
+    return axios.post(urls.register(), body)
+}
+
 const logout = async (token) => {
-    await axios.post(urls.logout(), '', {
+    return axios.post(urls.logout(), '', {
         headers: {
             Authorization: `Token ${token}`,
         },
@@ -29,6 +40,8 @@ const getCard = async (pk) => {
 }
 
 export {
+    login,
+    register,
     logout,
     getCards,
     getCard,

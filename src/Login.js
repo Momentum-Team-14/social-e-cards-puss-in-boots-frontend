@@ -1,7 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import { handleUpdate, nothing } from "./utils";
-import { urls } from "./endpoints";
+import { login, register } from "./endpoints";
 
 const Login = ({registering, onSuccess=nothing}) => {
     const [username, setUsername] = useState('')
@@ -31,14 +30,14 @@ const Login = ({registering, onSuccess=nothing}) => {
     const clickHandler = event => {
         event.preventDefault()
         if (registering) {
-            axios.post(urls.register(), {
+            register({
                 username, email, password,
                 re_password: confirm,
-            }).then(() => axios.post(urls.login(), { username, password }))
+            }).then(login({ username, password }))
                 .then(handleLogin(onSuccess))
                 .catch(err => setErrors(err.response.data || {}))
         } else {
-            axios.post(urls.login(), { username, password })
+            login({ username, password })
                 .then(handleLogin(onSuccess))
                 .catch(err => setErrors(err.response.data || {}))
         }
