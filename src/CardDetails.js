@@ -5,6 +5,7 @@ import { getCard } from "./endpoints"
 
 const CardDetails = (props) => {
     const [card, setCard] = useState(props.card)
+    const [showFront, setShowFront] = useState(true)
     const { pk } = useParams()
     useEffect(() => {
         if (!card) {
@@ -22,7 +23,9 @@ const CardDetails = (props) => {
         <div>
             <h1>{card.title}</h1>
             <div>by {card.owner.username}</div>
-            <div>{card.outer_message}</div>
+            <div
+                onClick={() => setShowFront(!showFront)}
+            >{showFront ? card.outer_message : card.inner_message}</div>
             <CommentList comments={card.comments}/>
         </div>
     )
