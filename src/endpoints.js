@@ -44,7 +44,7 @@ const getCard = async (pk) => {
 const createCard = async (token, card) => {
     if (!card.style) {
         card.style = 1
-    } else {
+    } else if (typeof card.style === 'object') {
         card.style = (await createStyle(card.style)).pk
     }
     const data = await axios.post(urls.createCard(), card, auth(token))
