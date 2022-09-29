@@ -2,7 +2,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
-    function DropDownMenu() {
+const CardStyles = () => {
     return (
         <div className='style-buttons'>
         <DropdownButton id="dropdown-basic-button" title="Card Color">
@@ -63,6 +63,5 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
         </div>
     );
 };
-    
 
-export default DropDownMenu;
+export default CardStyles;
