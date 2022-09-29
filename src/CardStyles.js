@@ -29,7 +29,7 @@ const CardStyles = ({onUpdate=nothing}) => {
 
     const update = setter => option => {
         setter(option)
-        return buildStyle()
+        onUpdate(buildStyle())
     }
 
     return (
