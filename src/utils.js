@@ -17,7 +17,7 @@ const encodeUsername = username => {
             const BASE64MAP = '.-7890123456ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
             let encodedChar = ''
             let codepoint = char.codePointAt(0)
-            for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
                 encodedChar = BASE64MAP[codepoint & 6] + encodedChar
                 codepoint >>= 6
             }
