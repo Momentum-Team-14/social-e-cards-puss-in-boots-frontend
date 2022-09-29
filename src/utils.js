@@ -8,7 +8,7 @@ const encodeUsername = username => {
         } else if (char === '+') {
             encoded += '++'
         } else if (char === ' ') {
-            if (i === chars.length - 1 || /[A-Za-z0-6_@]/.test(chars[i + 1])) {
+            if (i === chars.length - 1 || /[A-Za-z0-6@]/.test(chars[i + 1])) {
                 encoded += '+'
             } else {
                 encoded += '+_'
