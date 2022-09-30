@@ -50,13 +50,13 @@ const CardStyles = ({onUpdate=nothing}) => {
             {colors.map(option => <Dropdown.Item onClick={update(setBorderColor, 'border_color')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         <DropdownButton id="dropdown-basic-button" title="Font">
-            {colors.map(option => <Dropdown.Item onClick={update(setFont, 'font')}>{option}</Dropdown.Item>)}
+            {fonts.map(option => <Dropdown.Item onClick={update(setFont, 'font')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         <DropdownButton id="dropdown-basic-button" title="Font Color">
             {colors.map(option => <Dropdown.Item onClick={update(setFontColor, 'font_color')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         <DropdownButton id="dropdown-basic-button" title="Text Alignment">
-            {colors.map(option => <Dropdown.Item onClick={update(setTextAlign, 'text_align')}>{option}</Dropdown.Item>)}
+            {textAligns.map(option => <Dropdown.Item onClick={update(setTextAlign, 'text_align')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         </div>
     );

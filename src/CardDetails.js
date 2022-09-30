@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import CommentList from "./CommentList"
 import { getCard } from "./endpoints"
+import { decodeUsername } from "./utils"
 
 
 const CardDetails = (props) => {
@@ -23,7 +24,7 @@ const CardDetails = (props) => {
     return (
         <div>
             <h1>{card.title}</h1>
-            <div>by {card.owner.username}</div>
+            <div>by {decodeUsername(card.owner.username)}</div>
             <div
                 style={{
                     backgroundColor: card.style.card_color,
