@@ -10,6 +10,8 @@ const urls = {
     getCards: () => `${apiRoot}/ecard/`,
     getCard: (pk) => `${apiRoot}/ecard/${pk}/`,
     getComments: (pk) => `${apiRoot}/comments/${pk}/`,
+    createCard: () => `${apiRoot}/ecard/`,
+    createStyle: () => `${apiRoot}/styles/`,
 }
 
 const auth = token => ({
