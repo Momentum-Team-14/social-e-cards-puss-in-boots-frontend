@@ -18,39 +18,45 @@ const CardStyles = ({onUpdate=nothing}) => {
     const [fontColor, setFontColor] = useState(fontColors[0])
     const [textAlign, setTextAlign] = useState(textAligns[0])
 
-    const buildStyle = () => ({
-        card_color: color,
-        border: borderStyle,
-        border_color: borderColor,
-        font: font,
-        font_color: fontColor,
-        text_align: textAlign,
-    })
+    const buildStyle = (fieldOverride, option) => {
+        const style = {
+            card_color: color,
+            border: borderStyle,
+            border_color: borderColor,
+            font: font,
+            font_color: fontColor,
+            text_align: textAlign,
+        }
+        if (fieldOverride) {
+            style[fieldOverride] = option
+        }
+        return style
+    }
 
-    const update = setter => option => {
+    const update = (setter, field) => option => {
         setter(option)
-        onUpdate(buildStyle())
+        onUpdate(buildStyle(field, option))
     }
 
     return (
         <div className='style-buttons'>
         <DropdownButton id="dropdown-basic-button" title="Card Color">
-            {colors.map(option => <Dropdown.Item onClick={update(setColor)}>{option}</Dropdown.Item>)}
+            {colors.map(option => <Dropdown.Item onClick={update(setColor, 'color')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         <DropdownButton id="dropdown-basic-button" title="Border Style">
-            {borderStyles.map(option => <Dropdown.Item onClick={update(setBorderStyle)}>{option}</Dropdown.Item>)}
+            {borderStyles.map(option => <Dropdown.Item onClick={update(setBorderStyle, 'border')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         <DropdownButton id="dropdown-basic-button" title="Border Color">
-            {colors.map(option => <Dropdown.Item onClick={update(setBorderColor)}>{option}</Dropdown.Item>)}
+            {colors.map(option => <Dropdown.Item onClick={update(setBorderColor, 'border_color')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         <DropdownButton id="dropdown-basic-button" title="Font">
-            {colors.map(option => <Dropdown.Item onClick={update(setFont)}>{option}</Dropdown.Item>)}
+            {colors.map(option => <Dropdown.Item onClick={update(setFont, 'font')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         <DropdownButton id="dropdown-basic-button" title="Font Color">
-            {colors.map(option => <Dropdown.Item onClick={update(setFontColor)}>{option}</Dropdown.Item>)}
+            {colors.map(option => <Dropdown.Item onClick={update(setFontColor, 'font_color')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         <DropdownButton id="dropdown-basic-button" title="Text Alignment">
-            {colors.map(option => <Dropdown.Item onClick={update(setTextAlign)}>{option}</Dropdown.Item>)}
+            {colors.map(option => <Dropdown.Item onClick={update(setTextAlign, 'text_align')}>{option}</Dropdown.Item>)}
         </DropdownButton>
         </div>
     );
