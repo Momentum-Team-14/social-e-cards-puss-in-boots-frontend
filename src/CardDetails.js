@@ -27,7 +27,7 @@ const CardDetails = (props) => {
             <div
                 style={{
                     backgroundColor: card.style.card_color,
-                    border: `2px ${card.style.border} ${card.style.borderColor}`,
+                    border: `2px ${card.style.border} ${card.style.border_color}`,
                     color: card.style.font_color,
                     fontFamily: card.style.font,
                     textAlign: card.style.text_align,
